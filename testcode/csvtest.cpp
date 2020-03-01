@@ -19,7 +19,7 @@ class Book{
         string title, author, isbn, year;
         int copies;
     public:
-        Book(string ti, string au, string isb, string yr, int c){
+        Book(const string ti, const string au, const string isb, const string yr, int c){
             title = ti;
             author = au;
             year = yr;
@@ -29,12 +29,12 @@ class Book{
 };
 class BookShelf{
     private:
-        vector<Book> bookshelf;
+        vector<Book>* bookshelf;
         int books;
     public:
         void addBook(const Book & bookie){
             
-            bookshelf.push_back(bookie);
+            bookshelf.push_back(& bookie);
             if (bookshelf.size() == 10) {
                 cout << "Bookcase is full\n";
                 //BookCase.incrementShelf();
@@ -52,11 +52,12 @@ class BookShelf{
 };
 
 class BookCase {
-    static int shelf;
-    vector<Book> bs;
-    vector<BookShelf> bookcase;
+    int shelf; 
+    // when something is a static, it belongs to the class type ... it doesnt belong to the instance of the object
+    vector<Book>* bs;
+    vector<BookShelf>* bookcase;
     public:
-        void addBookShelf(<Book> bs){
+        void addBookShelf(<Book> & bs){
             if(shelf == 5) cout << "Error\n";
             bookcase[shelf] = bs; //add bookshelf to the bookcase at index shelf
             shelf++; //increment shelf after
