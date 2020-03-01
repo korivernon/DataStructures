@@ -129,11 +129,8 @@ class BookCase {
         bool addBookShelf(const vector<Book*>& newBookShelf){
             //Kori changed variable name ^^
             if(shelf == 5) {
-
                 bookcase.push_back(newBookShelf);
-
                 cout << "Error!\n Couldn't add book :(\n;";
-
                 return false;
             }
             
