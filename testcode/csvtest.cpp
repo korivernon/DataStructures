@@ -5,7 +5,29 @@
 #include<fstream>
 
 using namespace std;
-
+//open file function 
+void openFile() {
+    //attempt to open in each file.
+    //if file fails, then an error should be printed on the screen
+    //then the program closes automatically
+    //filestream object
+    ifstream ifs;
+    vector<string> files;
+    files.push_back("BookCaseA");
+    files.push_back("BookCaseB");
+    files.push_back("BookCaseC");
+    for(const string& bookCaseName : files) {
+        cout << bookCaseName << endl;
+        ifs.open(bookCaseName);
+        if (!ifs) {
+            cerr << "Couldn't open this file! Sorry!\n";
+            //cerr closes the program automatically.
+        }
+    }
+}
+//if you use the openFile function anywhere else, remember you opened the filestream
+//close the filestream once you are done streaming from files, using the syntax ifs.close();
+//ifs is the name of the ifstream object.
 void loadLibrary(){
     vector<string> files;
     files.push_back("BookCaseA");
@@ -28,7 +50,8 @@ class Book{
 };
 class BookShelf{
     private:
-        vector<Book>* bookshelf;
+        vector<Book*> bookshelf;
+        //syntax for pointer objects are : objectName*
         int books;
     public:
         void addBook(const Book & bookie){
@@ -53,8 +76,8 @@ class BookShelf{
 class BookCase {
     int shelf; 
     // when something is a static, it belongs to the class type ... it doesnt belong to the instance of the object
-    vector<Book>* bs;
-    vector<BookShelf>* bookcase;
+    vector<Book*> bs;
+    vector<BookShelf*> bookcase;
     public:
         void addBookShelf(<Book> & bs){
             if(shelf == 5) cout << "Error\n";
