@@ -74,17 +74,20 @@ class BookShelf{
         }
 
         const Book & getBook(const string & title){
+            //is this the correct placement ????
             int counter = 0;
             for(const Book & book : bookshelf ){
                 //for book in bookshelf
                 counter ++;
+                //counter to 
                 if (book.title == title){
-                    cout << "This is book: " << counter << endl;
-                    return book;
+                    cout << "This is book number: " << counter << endl;
+                    return true;
                     //return the book object in the vector if it's correct 
                 }
             }
         }
+
         /*
         const Book & getBookCode(string call) const{
             return bookshelf[call]; //'a1.1' 1
@@ -114,11 +117,26 @@ class BookCase {
 
                 return false;
             }
+            
 
             //bookcase[shelf] = bs; //add bookshelf to the bookcase at index shelf
             //shelf++; //increment shelf after
             //bs = new BookShelf;
         }
+
+        const Book & getBookFromShelf(const string & title ){
+            int counter  = 0;
+            for(const BookShelf & bs : bookcase){
+                //for bookshelf in bookcase...
+                if (getBook(title).title == title){
+                    cout << "Shelf Number: " << counter << endl; 
+                }
+                return getBook(title);
+                // returning the book at this point... 
+            }
+        }
+
+
         /*
         const Book & getBook(string code)const {
             return bookcase[code[1]].getBookCode(code[3]); //take 'a1.1' for example.
