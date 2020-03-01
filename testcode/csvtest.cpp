@@ -46,8 +46,10 @@ class Book{
         //we use an initialization list to INITIALIZE the values, therefore we don't have to set
         //the values manually ourselves.
         Book(const string& ti, const string& au, const string& isb, const string& yr, int c) :
-        title(ti), author(au), year(yr), isbn(isb), copies(c) {}
-        Book(const vector<Book*>& books) : 
+        title(ti), author(au), year(yr), isbn(isb), copies(c) {} //something so complex that you would have to initialize it in an initialization list
+        // initializing private fields... your private field title is going to be initiialized to what title year is.
+        
+        // Book(const vector<Book*>& books) : 
 };
 class BookShelf{
     private:
