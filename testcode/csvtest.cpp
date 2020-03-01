@@ -36,6 +36,16 @@ void loadLibrary(){
     cout << files[0] << endl;
 }
 class Book{
+    //ostream allows you to print object directly! it is made a friend so it can access private fields for
+    //theBook, but it is not made public so that the output operatoro can't be modified by any external code.
+    //book is passed by constant reference and this is a unary operation (operaion that only has one bound
+    //this is an operator overload!
+    friend ostream& operator << (ostream& os, const Book& theBook) {
+        os << "The title of the book is: " << theBook.title << endl;
+        os << "Author: " << theBook.author << "ISBN: " << theBook.isbn << "Published: " <<
+        theBook.year;
+        return os;
+    }
     //Title, Author	ISBN	Year	Number_of_copies
     private:
         string title, author, isbn, year;
