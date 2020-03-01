@@ -51,6 +51,8 @@ class Book{
         
         // Book(const vector<Book*>& books) : 
 };
+
+//create outside class to load books in inside of the class.. 
 class BookShelf{
     private:
         vector<Book*> bookshelf;
@@ -58,11 +60,15 @@ class BookShelf{
         // allocating books on the heap. Book* = new Book
         int books;
     public:
-        void addBook(const Book & bookie){
+        bool addBook(const string & ti, const string & au, const string & isb, const string & yr, int c){
             
-            bookshelf.push_back(& bookie);
+            Book* bookName = new Book(ti, au, isb, yr, c);
+            
+            bookshelf.push_back(bookName);
+
             if (bookshelf.size() != 10) {
                 cout << "Bookcase is full\n";
+                return true;
                 //BookCase.incrementShelf();
             }
         }
