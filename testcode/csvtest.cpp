@@ -21,13 +21,10 @@ class Book{
     public:
         //Hellen:
         //Pass strings by constant reference in constructor since strings aren't primitive to c++
-        Book(const string ti, const string au, const string isb, const string yr, int c){
-            title = ti;
-            author = au;
-            year = yr;
-            isbn = isb;
-            copies = c;
-        }
+        //we use an initialization list to INITIALIZE the values, therefore we don't have to set
+        //the values manually ourselves.
+        Book(const string& ti, const string& au, const string& isb, const string& yr, int c) :
+        title(ti), author(au), year(yr), isbn(isb), copies(c) {}
 };
 class BookShelf{
     private:
