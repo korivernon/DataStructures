@@ -55,12 +55,13 @@ class BookShelf{
     private:
         vector<Book*> bookshelf;
         //syntax for pointer objects are : objectName*
+        // allocating books on the heap. Book* = new Book
         int books;
     public:
         void addBook(const Book & bookie){
             
             bookshelf.push_back(& bookie);
-            if (bookshelf.size() == 10) {
+            if (bookshelf.size() != 10) {
                 cout << "Bookcase is full\n";
                 //BookCase.incrementShelf();
             }
