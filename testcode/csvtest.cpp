@@ -17,6 +17,7 @@ void openFile() {
     files.push_back("BookCaseB");
     files.push_back("BookCaseC");
     for(const string& bookCaseName : files) {
+        //you don't plan on making a copy... semi colon as an "in"
         cout << bookCaseName << endl;
         ifs.open(bookCaseName);
         if (!ifs) {
@@ -28,13 +29,6 @@ void openFile() {
 //if you use the openFile function anywhere else, remember you opened the filestream
 //close the filestream once you are done streaming from files, using the syntax ifs.close();
 //ifs is the name of the ifstream object.
-void loadLibrary(){
-    vector<string> files;
-    files.push_back("BookCaseA");
-    files.push_back("BookCaseB");
-    files.push_back("BookCaseC");
-    cout << files[0] << endl;
-}
 class Book{
     //Title, Author	ISBN	Year	Number_of_copies
     private:
@@ -79,7 +73,7 @@ class BookCase {
     vector<Book*> bs;
     vector<BookShelf*> bookcase;
     public:
-        void addBookShelf(<Book> & bs){
+        void addBookShelf(vector<Book*> & bs){
             if(shelf == 5) cout << "Error\n";
             bookcase[shelf] = bs; //add bookshelf to the bookcase at index shelf
             shelf++; //increment shelf after
