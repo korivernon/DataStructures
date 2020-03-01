@@ -96,7 +96,6 @@ class BookCase {
                 cout << "Error!\n Couldn't add book :(\n;";
                 return false;
             }
-            BookSelf* newBookShelf = new
 
             //bookcase[shelf] = bs; //add bookshelf to the bookcase at index shelf
             //shelf++; //increment shelf after
