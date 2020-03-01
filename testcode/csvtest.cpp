@@ -59,7 +59,9 @@ class BookShelf{
         //syntax for pointer objects are : objectName*
         // allocating books on the heap. Book* = new Book
         int books;
+        int shelfnum;
     public:
+        ~BookShelf;
         bool addBook(const string & ti, const string & au, const string & isb, const string & yr, int c){
             
             Book* bookName = new Book(ti, au, isb, yr, c);
@@ -67,7 +69,14 @@ class BookShelf{
             bookshelf.push_back(bookName);
 
             if (bookshelf.size() != 10) {
-                cout << "Bookcase is full\n";
+                cout << "Bookshelf is full\n";
+
+                cout << "Bookshelf added to shelf number: " << shelfnum << endl;
+                for (const Book & book: bookshelf) {
+                    
+                    cout << book.title << "; ";
+                }
+                cout << endl;
                 return true;
                 //BookCase.incrementShelf();
             }
