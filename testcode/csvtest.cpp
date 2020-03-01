@@ -19,6 +19,8 @@ class Book{
         string title, author, isbn, year;
         int copies;
     public:
+        //Hellen:
+        //Pass strings by constant reference in constructor since strings aren't primitive to c++
         Book(const string ti, const string au, const string isb, const string yr, int c){
             title = ti;
             author = au;
