@@ -47,6 +47,7 @@ class Book{
         //the values manually ourselves.
         Book(const string& ti, const string& au, const string& isb, const string& yr, int c) :
         title(ti), author(au), year(yr), isbn(isb), copies(c) {}
+        Book(const vector<Book*>& books) : 
 };
 class BookShelf{
     private:
@@ -80,11 +81,17 @@ class BookCase {
     vector<BookShelf*> bookcase;
     public:
         //WRONG SYNTAX
-        void addBookShelf(<Book> & bs){
-            if(shelf == 5) cout << "Error\n";
-            bookcase[shelf] = bs; //add bookshelf to the bookcase at index shelf
-            shelf++; //increment shelf after
-            bs = new BookShelf;
+        //HELLEN IS CHANGING THIS!
+        bool addBookShelf(const vector<Book*>& newBookCase){
+            if(shelf == 5) {
+                cout << "Error!\n Couldn't add book :(\n;";
+                return false;
+            }
+            BookSelf* newBookShelf = new
+
+            //bookcase[shelf] = bs; //add bookshelf to the bookcase at index shelf
+            //shelf++; //increment shelf after
+            //bs = new BookShelf;
         }
         /*
         const Book & getBook(string code)const {
