@@ -37,7 +37,7 @@ void loadLibrary(){
 }
 class Book{
     //ostream allows you to print object directly! it is made a friend so it can access private fields for
-    //theBook, but it is not made public so that the output operatoro can't be modified by any external code.
+    //theBook, but it is not made public so that the output operator can't be modified by any external code.
     //book is passed by constant reference and this is a unary operation (operaion that only has one bound
     //this is an operator overload!
     friend ostream& operator << (ostream& os, const Book& theBook) {
@@ -84,7 +84,7 @@ class BookShelf{
                 cout << "Bookshelf added to shelf number: " << shelfnum << endl;
                 for (const Book & book: bookshelf) {
                     
-                    cout << book.title << "; ";
+                    cout << book;
                 }
                 cout << endl;
                 return true;
