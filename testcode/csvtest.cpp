@@ -36,6 +36,9 @@ void loadLibrary(){
     cout << files[0] << endl;
 }
 class Book{
+    friend ostream& operator(ostream& os, const Book& theBook) {
+        return os;
+    }
     //Title, Author	ISBN	Year	Number_of_copies
     private:
         string title, author, isbn, year;
