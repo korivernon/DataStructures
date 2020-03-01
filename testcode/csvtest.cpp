@@ -72,6 +72,19 @@ class BookShelf{
                 //BookCase.incrementShelf();
             }
         }
+
+        const Book & getBook(const string & title){
+            int counter = 0;
+            for(const Book & book : bookshelf ){
+                //for book in bookshelf
+                counter ++;
+                if (book.title == title){
+                    cout << "This is book: " << counter << endl;
+                    return book;
+                    //return the book object in the vector if it's correct 
+                }
+            }
+        }
         /*
         const Book & getBookCode(string call) const{
             return bookshelf[call]; //'a1.1' 1
@@ -98,7 +111,7 @@ class BookCase {
                 bookcase.push_back(newBookShelf);
 
                 cout << "Error!\n Couldn't add book :(\n;";
-                
+
                 return false;
             }
 
