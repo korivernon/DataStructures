@@ -28,7 +28,6 @@ void openFile() {
 //if you use the openFile function anywhere else, remember you opened the filestream
 //close the filestream once you are done streaming from files, using the syntax ifs.close();
 //ifs is the name of the ifstream object.
-
 // void loadLibrary(){
 //     vector<string> files;
 //     files.push_back("BookCaseA");
@@ -60,6 +59,13 @@ class Book{
         Book(const string& ti, const string& au, const string& isb, const string& yr, int c) :
         title(ti), author(au), year(yr), isbn(isb), copies(c) {} //something so complex that you would have to initialize it in an initialization list
         // initializing private fields... your private field title is going to be initiialized to what title year is.
+        const string & getTitle() const{
+            //prevents string from being modified and prevents function from modifying string
+            return title;
+        }
+        const string & getCopies() const{
+            return copies;
+        }
         
         // Book(const vector<Book*>& books) : 
 };
@@ -73,7 +79,6 @@ class BookShelf{
         int books;
         int shelfnum;
     public:
-        ~BookShelf;
         bool addBook(const string & ti, const string & au, const string & isb, const string & yr, int c){ 
             Book* bookName = new Book(ti, au, isb, yr, c);
             bookshelf.push_back(bookName);
@@ -89,19 +94,38 @@ class BookShelf{
             }
         }
 
-        const Book & getBook(const string & title){
-            //is this the correct placement ????
+        bool getBookBool(const string & title){
             int counter = 0;
-            for(const Book & book : bookshelf ){
+            for(const Book * book : bookshelf){
+                counter ++;
+                if (book->getTitle() == title){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+
+        vector<string> getBook(const string & title){
+            //is this the correct placement ????
+            vector<string> bookvec;
+            int counter = 0;
+            for(const Book * book : bookshelf ){
                 //for book in bookshelf
                 counter ++;
                 //counter to 
-                if (book.title == title){
+                if (book.getTitle() == title){
                     cout << "This is book number: " << counter << endl;
-                    return true;
+                    bookvec.push_back(book->getTitle());
+                    bookvec.push_back(book->getCopies());
+                    bookvec.push_back(string(counter));
+                    return book;
                     //return the book object in the vector if it's correct 
                 }
             }
+            bookvec.push_back("Not Found");
+            return bookvec;
         }
 
         /*
@@ -136,8 +160,9 @@ class BookCase {
             int counter  = 0;
             for(const BookShelf & bs : bookcase){
                 //for bookshelf in bookcase...
-                if (getBook(title).title == title){
-                    cout << "Shelf Number: " << counter << endl; 
+                if (getBook(title)[0] == title){
+                    cout << "Shelf Number: " << counter << endl;
+                    getBook(title)[0].push_back(string(counter))
                 }
                 return getBook(title);
                 // returning the book at this point... 
