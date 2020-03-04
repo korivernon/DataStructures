@@ -16,7 +16,7 @@ void openFile() {
     files.push_back("BookCaseA");
     files.push_back("BookCaseB");
     files.push_back("BookCaseC");
-    for(const string& bookCaseName : files) {
+    for(const string & bookCaseName : files) {
         cout << bookCaseName << endl;
         ifs.open(bookCaseName);
         if (!ifs) {
@@ -28,13 +28,15 @@ void openFile() {
 //if you use the openFile function anywhere else, remember you opened the filestream
 //close the filestream once you are done streaming from files, using the syntax ifs.close();
 //ifs is the name of the ifstream object.
-void loadLibrary(){
-    vector<string> files;
-    files.push_back("BookCaseA");
-    files.push_back("BookCaseB");
-    files.push_back("BookCaseC");
-    cout << files[0] << endl;
-}
+
+// void loadLibrary(){
+//     vector<string> files;
+//     files.push_back("BookCaseA");
+//     files.push_back("BookCaseB");
+//     files.push_back("BookCaseC");
+//     cout << files[0] << endl;
+// }
+
 class Book{
     //ostream allows you to print object directly! it is made a friend so it can access private fields for
     //theBook, but it is not made public so that the output operator can't be modified by any external code.
@@ -72,18 +74,13 @@ class BookShelf{
         int shelfnum;
     public:
         ~BookShelf;
-        bool addBook(const string & ti, const string & au, const string & isb, const string & yr, int c){
-            
+        bool addBook(const string & ti, const string & au, const string & isb, const string & yr, int c){ 
             Book* bookName = new Book(ti, au, isb, yr, c);
-            
             bookshelf.push_back(bookName);
-
             if (bookshelf.size() != 10) {
                 cout << "Bookshelf is full\n";
-
                 cout << "Bookshelf added to shelf number: " << shelfnum << endl;
-                for (const Book & book: bookshelf) {
-                    
+                for (const Book & book: bookshelf) {  
                     cout << book;
                 }
                 cout << endl;
@@ -111,7 +108,7 @@ class BookShelf{
         const Book & getBookCode(string call) const{
             return bookshelf[call]; //'a1.1' 1
         }
-        const Book & findTitle(string title) const{ //returns index of book if found
+        const Book & findTitle(cosnt string & title) const{ //returns index of book if found
             for(int i = 0; i < 10; i++){ //iterating through the bookshelves
                 if (title == bookshelf[i].getTitle()) return i+1; // if you find it here then return it +1
             }
@@ -133,11 +130,6 @@ class BookCase {
                 cout << "Error!\n Couldn't add book :(\n;";
                 return false;
             }
-            
-
-            //bookcase[shelf] = bs; //add bookshelf to the bookcase at index shelf
-            //shelf++; //increment shelf after
-            //bs = new BookShelf;
         }
 
         const Book & getBookFromShelf(const string & title ){
